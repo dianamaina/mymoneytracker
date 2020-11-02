@@ -48,6 +48,13 @@ app.get("/api/transactions", (req, res)) =>{
 
 app.post("/api/transactions", (req,res) => {
   db.transactions.creatr(req, body);
+}).catch((err) => {
+console.log(err);
+res.json({
+  error: true,
+  data: null,
+  message: "failed to create new transaction.",
+});
 });
 
 app.use(logger("dev"));
