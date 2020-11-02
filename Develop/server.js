@@ -5,6 +5,8 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+const db = require ("./models");
+
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
@@ -31,6 +33,14 @@ app.get("/api/config", (req, res) => {
     success: true,
   });
 });
+
+app.get("/api/transactions", (req, res)) =>{
+  db.transactions.find({}).then((foundtransaction) =>{
+    res.json (foundtransaction);
+  });
+};
+
+app.
 
 app.use(logger("dev"));
 
