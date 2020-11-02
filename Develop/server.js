@@ -37,10 +37,18 @@ app.get("/api/config", (req, res) => {
 app.get("/api/transactions", (req, res)) =>{
   db.transactions.find({}).then((foundtransaction) =>{
     res.json (foundtransaction);
-  });
-};
+  }).catch(err => {
+    console.log(err);
+    res.json ({
+      error: true,
+      data: null,
+      message: "failed to retreive transaction"
+    });
+  
 
-app.
+app.post("/api/transactions", (req,res) => {
+  db.transactions.creatr(req, body);
+});
 
 app.use(logger("dev"));
 
